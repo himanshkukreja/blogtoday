@@ -42,7 +42,7 @@ else:
   
   # string=f"mysql+mysqldb://root:{PASSWORD}@{PUBLIC_IP_ADDRESS}/{DBNAME}?unix_socket=/cloudsql/{PROJECT_ID}:{INSTANCE_NAME}"
   
-  app.config["SQLALCHEMY_DATABASE_URI"] = string
+  app.config["SQLALCHEMY_DATABASE_URI"] = "postgres://nhyvhcbnwcjffn:39d7953fa82340e785cdd44e3ba0392bfad29b94f5307e6f8e8eac4610483064@ec2-107-22-122-106.compute-1.amazonaws.com:5432/darp3cn561inkf"
 
 
 
@@ -58,7 +58,7 @@ class Contacts(db.Model):
     email = db.Column(db.String(255),  nullable=False)
     phone_num = db.Column(db.Integer, nullable=False)
     message = db.Column(db.String(255),  nullable=False)
-    date = db.Column(db.String(255), nullable=True)
+    date = db.Column(db.DateTime, nullable=True)
 
 class Posts(db.Model):
 
@@ -69,7 +69,7 @@ class Posts(db.Model):
     slug = db.Column(db.String(255),  nullable=False)
     content = db.Column(db.String(10000), nullable=False)
     img = db.Column(db.String(20), nullable=False)
-    date = db.Column(db.String(20), nullable=True)
+    date = db.Column(db.DateTime, nullable=True)
 
 class Users(UserMixin,db.Model):
     
@@ -79,7 +79,7 @@ class Users(UserMixin,db.Model):
     phone = db.Column(db.Integer,  nullable=False)
     age = db.Column(db.Integer,  nullable=False)
     password = db.Column(db.String(100), nullable=False)
-    dateofsignup = db.Column(db.String(20), nullable=True)
+    dateofsignup = db.Column(db.DateTime, nullable=True)
     def get_id(self):
       return (self.sno)
 
