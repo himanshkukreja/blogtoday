@@ -365,4 +365,6 @@ def delete_account():
   flash("account deleted")
   return redirect('/')  
 
-app.run(debug=True)
+
+if __name__=="__main__":
+  app.run()
